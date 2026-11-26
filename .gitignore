@@ -1,0 +1,10 @@
+/docs/
+/report.docx
+/out/
+/.venv/
+/.vscode/
+/.idea/
+__pycache__/
+*.py[cod]
+*.zip
+*.whl
