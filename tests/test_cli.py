@@ -14,7 +14,7 @@ EXAMPLES = PROJECT / "examples"
 
 def run_cli(source, output, option="--output"):
     return subprocess.run(
-        [sys.executable, str(MAIN), option, str(output)],
+        [sys.executable, "-X", "utf8", str(MAIN), option, str(output)],
         input=source, capture_output=True, check=False,
     )
 
@@ -58,5 +58,5 @@ class CliTest(unittest.TestCase):
             result = run_cli(b"{item -> 1}", output)
             self.assertEqual(result.returncode, 1)
             message = result.stderr.decode("utf-8", errors="replace")
-            self.assertIn("'}'", message)
+            self.assertIn("строка 1, столбец 11", message)
             self.assertEqual(output.read_text(encoding="utf-8"), "old")
